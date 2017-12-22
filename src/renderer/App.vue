@@ -16,4 +16,8 @@
 </script>
 
 <style scoped>
+#app {
+  height: 100%;
+  background-color: #191c21;
+}
 </style>

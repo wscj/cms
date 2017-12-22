@@ -3,7 +3,7 @@
     <div class="container">
       <div class="title">
         <img src="../assets/img/github.png">
-        <span>摄像监控系统</span>
+        <span>躲猫猫系统</span>
       </div>
       <div class="content">
         <div class="inputs">
@@ -25,7 +25,7 @@
             </div>
           </div>
           <div class="btn">
-            <input type="button" value="登录" name="">
+            <input type="button" value="登录" @click="login">
           </div>
           <div class="forgot">
             <a href="">忘记密码？</a>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import vInput from './Input'
+import vInput from './common/Input'
 export default {
   data () {
     return {}
@@ -49,6 +49,10 @@ export default {
   methods: {
     close () {
       this.$store.commit('SET_LOGIN')
+    },
+    login () {
+      console.log(this.fn.alert('kk'))
+      // console.log(this.g, this.)
     }
   }
 }
@@ -67,6 +71,7 @@ export default {
   justify-content: center;
   align-items: center;
   color: #666;
+  user-select: none;
   .container {
     width: 700px;
     height: 480px;

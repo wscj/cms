@@ -40,15 +40,15 @@
 <script>
 import vInput from './Input'
 export default {
-  data: () => {
+  data () {
     return {}
   },
   components: {
     vInput
   },
   methods: {
-    close: () => {
-      console.log(this)
+    close () {
+      this.$store.commit('SET_LOGIN')
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <v-login></v-login>
+    <v-login v-if="!this.$store.state.Global.isLogined"></v-login>
   </div>
 </template>
 

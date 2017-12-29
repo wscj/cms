@@ -5,6 +5,7 @@
       :name="name"
       :style="styleObj"
       :autofocus="focus"
+      v-model="model"
       :placeholder="emptyText">
   </div>
 </template>
@@ -12,7 +13,9 @@
 <script>
 export default {
   data: () => {
-    return {}
+    return {
+      model: null
+    }
   },
   props: {
     type: {
@@ -34,6 +37,11 @@ export default {
     },
     focus: {
       type: String
+    }
+  },
+  watch: {
+    model: function (newValue, oldValue) {
+      this.$emit('changeValue', newValue, oldValue)
     }
   }
 }

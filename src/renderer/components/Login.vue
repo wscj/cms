@@ -3,16 +3,24 @@
     <div class="container">
       <div class="title">
         <img src="../assets/img/github.png">
-        <span>躲猫猫系统</span>
+        <span>躲猫猫</span>
       </div>
       <div class="content">
         <div class="inputs">
           <p>用户登录</p>
           <div class="account">
-            <v-input :class="'icon-password'" :emptyText="'输入帐号'" :focus="'autofocus'"></v-input>
+            <v-input
+              :class="'icon-password'"
+              :emptyText="'输入帐号'"
+              :focus="'autofocus'"
+              @changeValue="changeAccount"></v-input>
           </div>
           <div class="pwd">
-            <v-input :type="'password'" :class="'icon-lock'" :emptyText="'输入密码'"></v-input>
+            <v-input
+              :type="'password'"
+              :class="'icon-lock'"
+              :emptyText="'输入密码'"
+              @changeValue="changePwd"></v-input>
           </div>
           <div class="checkbox">
             <div class="remember-pwd">
@@ -41,7 +49,10 @@
 import vInput from './common/Input'
 export default {
   data () {
-    return {}
+    return {
+      account: '',
+      pwd: ''
+    }
   },
   components: {
     vInput
@@ -51,8 +62,13 @@ export default {
       this.$store.commit('SET_LOGIN')
     },
     login () {
-      console.log(this.fn.alert('kk'))
-      // console.log(this.g, this.)
+      this.$fn.login(this.$axios, this.account, this.pwd)
+    },
+    changeAccount (newValue, oldValue) {
+      this.account = newValue
+    },
+    changePwd (newValue, oldValue) {
+      this.pwd = newValue
     }
   }
 }

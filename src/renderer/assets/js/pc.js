@@ -11,6 +11,9 @@ export default {
        */
       alert: function (msg) {
         // console.warn(process.env)
+      },
+      error (msg) {
+        console.error(msg)
       }
     }
   }

@@ -62,13 +62,21 @@ export default {
       this.$store.commit('SET_LOGIN')
     },
     login () {
-      this.$fn.login(this.$axios, this.account, this.pwd)
+      this.$fn.login(this.$axios, this.account, this.pwd, this.loginCallback)
     },
     changeAccount (newValue, oldValue) {
       this.account = newValue
     },
     changePwd (newValue, oldValue) {
       this.pwd = newValue
+    },
+    loginCallback (err, resp) {
+      if (err) {
+        this.$pc.error(err)
+        return
+      }
+      this.close()
+      console.log('登录成功')
     }
   }
 }

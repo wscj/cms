@@ -13,9 +13,15 @@ export default {
        * @param {function} callback 回调函数
        */
       login: function (axios, account, pwd, callback) {
-        axios.get('/api/login', { params: { account: account, pwd: pwd } })
+        const md5 = require('md5')
+        axios.get('/api/login', { params: { account: account, pwd: md5(pwd) } })
           .then(resp => {
-            console.log(666)
+            if (resp.data.error) {
+              callback(resp.data.error)
+            } else {
+              localStorage.user = resp.data
+              callback(null, resp)
+            }
           })
       }
     }
